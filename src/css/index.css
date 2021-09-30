@@ -1,0 +1,52 @@
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+
+  & .battle-board {
+    background: white;
+    height: 750px;
+    width: 80%;
+    border-radius: 5%;
+    border: 3px solid;
+
+    display: flex;
+
+    & .player-trainer {
+      
+      border: 3px solid;
+      height: 75%;
+      width: 35%;
+    }
+
+    & .battle-info-box {
+      border: 3px solid;
+      height: 75%;
+      width: 30%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      & .player-pool {
+        border: 3px solid;
+        height: 60%;
+        width: 85%;
+      }
+
+      & .buttons-box {
+        background: aquamarine;
+
+        & .btn-start-hide {
+          display: none;
+        }
+      }
+    }
+
+    & .enemy-trainer {
+      border: 3px solid;
+      height: 75%;
+      width: 35%;
+    }
+  }
+}
