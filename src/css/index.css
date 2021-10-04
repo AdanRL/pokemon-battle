@@ -37,7 +37,7 @@ body {
       & .buttons-box {
         background: aquamarine;
 
-        & .btn-start-hide {
+        & .hide {
           display: none;
         }
       }
