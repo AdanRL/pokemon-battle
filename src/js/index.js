@@ -1,19 +1,21 @@
-const pikachu = {
-    name: "pikachu",
-    health: 100,
-    attacks:  {
-        thunder: 20,
-        tackle: 5
-    }
-};
-const charmander = {
-    name: "charmander",
-    health: 120,
-    attacks:  {
-        flamethrower: 20,
-        blaze: 30
-    }
-};
+const pokePools = [1,4,7,10,11,12,13,14,15,16,17,18,19,20];
+const team = [];
+const pokeApi = () => {
+    const url = "https://pokeapi.co/api/v2/pokemon/";
+    pokePools.forEach( (pokeid) => { 
+        fetch(`${url}${pokeid}`)
+        .then(response => response.json())
+        .then(data => {
+            localStorage.setItem(data.id, [data.name, data.sprites.back_default, data.sprites.front_default, 
+                data.moves[0].move.name,
+                data.moves[1].move.name,
+                data.moves[2].move.name,
+                data.moves[3].move.name]); 
+        } );
+    })
+}
+pokeApi();
+
 
 const start = btnStart.addEventListener( 'click', () => {
     const startButton = document.querySelector('#btnStart')
