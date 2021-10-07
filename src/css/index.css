@@ -32,6 +32,15 @@ body {
         border: 3px solid;
         height: 60%;
         width: 85%;
+
+        display: grid;
+        grid-template-columns: repeat(3, 60px);
+        grid-template-rows: repeat(5, 60px);
+
+        & img {
+          height: 50px;
+          width: 50px;
+        }
       }
 
       & .buttons-box {
