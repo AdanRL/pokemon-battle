@@ -3,7 +3,6 @@ const pokePools = [
   1, 4, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
   20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31
 ];
-const pokeGroup = [];
 
 const getPokemonList = () => {
   const prefixUrl = "https://pokeapi.co/api/v2/pokemon/";
@@ -57,13 +56,11 @@ const preparePool = () => {
 const pokeSelection = document.querySelector(".player-pool").addEventListener("click", (event) => {
   const id = parseInt(event.target.attributes.id.value);
   if (event.target.className === "pool") {
-    const isTheSame = (e) => e === id;
-    const checkInGroup = pokeGroup.findIndex(isTheSame);
-    if (checkInGroup === -1 && pokeGroup.length < 6) {
-      pokeGroup.push(id);
+    const isTheSame = (e) => e.id === id;
+    const checkInGroup = battleTeam.findIndex(isTheSame);
+    if (checkInGroup === -1 && battleTeam.length < 6) {
       insertOnTeam(id);
-    } else if (checkInGroup !== -1 && pokeGroup.length <= 6) {
-      pokeGroup.splice(checkInGroup, 1);
+    } else if (checkInGroup !== -1 && battleTeam.length <= 6) {
       deleteFromTeam(id);
     }
   }
@@ -76,4 +73,4 @@ const removePoolView = () => {
   console.log(poolSection);
 };
 
-export { getPokemonList, pokeSelection, pokeGroup, getStoredPokemon, removePoolView };
+export { getPokemonList, pokeSelection, getStoredPokemon, removePoolView, pokePools };

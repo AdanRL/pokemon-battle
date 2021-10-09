@@ -1,11 +1,11 @@
 import { getStoredPokemon } from "./pokePool.js";
 
 const battleTeam = [];
+const enemyTeam = [];
 
 const insertOnTeam = (pokeId) => {
   const playerTeam = document.querySelector(".poke-team");
   const pokeList = getStoredPokemon();
-
   pokeList.forEach(pokemon => {
     if (pokeId === pokemon.id) {
       battleTeam.push(pokemon);
@@ -28,4 +28,7 @@ const deleteFromTeam = (pokeId) => {
   console.log("battleTeam", battleTeam);
 };
 
+const createEnemyTeam = () => {
+  const pokeList = getStoredPokemon();
+};
 export { deleteFromTeam, insertOnTeam, battleTeam };
