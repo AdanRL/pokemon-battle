@@ -1,9 +1,9 @@
-const pokePools = [1, 4, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+const pokePools = [1, 4, 7, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+  21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31];
 
 const getPokemonList = () => {
   const prefixUrl = "https://pokeapi.co/api/v2/pokemon/";
-  const promises = [];
-  pokePools.forEach((pokeId) => {
+  const pool = pokePools.map((pokeId) => {
     const promise = fetch(`${prefixUrl}${pokeId}`)
       .then(response => response.json())
       .then(data => {
@@ -21,9 +21,9 @@ const getPokemonList = () => {
         };
         localStorage.setItem(data.id, JSON.stringify(info));
       });
-    promises.push(promise);
+    return promise;
   });
-  Promise.all(promises)
+  Promise.all(pool)
     .then(() => prepareTeam());
 };
 getPokemonList();
@@ -37,6 +37,7 @@ const getStoredPokemon = () => pokePools.map((pokeId) => {
 const prepareTeam = () => {
   const playerPool = document.querySelector(".player-pool");
   const pokeList = getStoredPokemon();
+  console.log(pokeList);
 
   pokeList.forEach(pokemon => {
     const button = document.createElement("button");
